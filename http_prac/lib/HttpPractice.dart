@@ -1,7 +1,5 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
+import 'package:http_prac/HomePage.dart';
 
 class HttpPractice extends StatefulWidget {
   const HttpPractice({Key? key}) : super(key: key);
@@ -11,22 +9,33 @@ class HttpPractice extends StatefulWidget {
 }
 
 class _HttpPracticeState extends State<HttpPractice> {
-  void test() async {
-    var url = Uri.https('api.thedogapi.com','/v1/breeds');
-
-
-    // Await the http get response, then decode the json-formatted response.
-    var response = await http.get(url);
-    print('Response status: ${response.statusCode}');
-    print('Response body: ${response.body}');
-  }
-
 
   @override
   Widget build(BuildContext context) {
-    test();
     return Scaffold(
-
+      backgroundColor: Color(0xffc5b2fc),
+      body: Center(
+          child :
+          Container(
+            child: ElevatedButton(
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context)=> const HomePage()),
+                );
+              }, child: Text('강아지\n백과사전',
+            style: TextStyle(fontFamily: 'CookieRun_Re')
+            ),
+              style: ElevatedButton.styleFrom(
+                primary: Color(0xff885aef),
+                padding: EdgeInsets.all(60),
+                shadowColor: Color(0xff885aef),
+                elevation: 20,
+                shape: CircleBorder(),
+                textStyle: TextStyle(fontSize: 25),
+              ),
+        ),
+      )
+      )
     );
   }
 }
